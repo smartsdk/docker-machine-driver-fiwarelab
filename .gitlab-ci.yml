@@ -6,9 +6,6 @@ variables:
 
 image: golang
 
-before_script:
-  - docker info
-
 build:
   stage: build
   script:

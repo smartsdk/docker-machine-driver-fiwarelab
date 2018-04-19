@@ -14,7 +14,7 @@ before_script:
 build:
   stage: build
   script:
-    - make release
+    - cd $PPATH/docker-machine-driver-fiwarelab && make release
   artifacts:
     paths:
       - release

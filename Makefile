@@ -14,7 +14,7 @@ endif
 clean:
 	rm -f ./bin/$(name)*
 
-compile:
+compile: deps
 	GOGC=off CGOENABLED=0 go build -i -o ./bin/$(name)$(bin_suffix) ./cmd
 
 print-success:
@@ -25,13 +25,16 @@ print-success:
 
 build: compile print-success
 
-release:
+deps:
+	go get
+
+release: deps
 	rm -rf release
 	mkdir release
 	GOOS=linux GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name) ./cmd
 	tar --remove-files -cvzf release/$(name)-linux-amd64-$(version).tar.gz -C release $(name)
 
-release-other:
+release-other: deps
 	GOOS=darwin GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name) ./cmd
 	tar --remove-files -cvzf release/$(name)-darwin-amd64-$(version).tar.gz -C release $(name)
 	GOOS=windows GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name).exe ./cmd
@@ -41,4 +44,4 @@ install:
 	cp bin/$(name) /usr/local/bin/
 
 
-.PHONY : build release release-other install
+.PHONY : build release release-other install deps

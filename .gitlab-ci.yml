@@ -3,8 +3,13 @@ stages:
   - build
 
 variables:
-
+  PPATH: /go/src/github.com/smartsdk
+    
 image: golang
+
+before_script:
+  - mkdir -p $PPATH
+  - ln -s $CI_PROJECT_DIR $PPATH/docker-machine-driver-fiwarelab
 
 build:
   stage: build

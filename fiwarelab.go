@@ -1,4 +1,4 @@
-package openstack
+package fiwarelab
 
 import (
 	"fmt"
@@ -63,175 +63,175 @@ const (
 func (d *Driver) GetCreateFlags() []mcnflag.Flag {
 	return []mcnflag.Flag{
 		mcnflag.StringFlag{
-			EnvVar: "OS_AUTH_URL",
-			Name:   "openstack-auth-url",
-			Usage:  "OpenStack authentication URL",
+			EnvVar: "FIWARELAB_AUTH_URL",
+			Name:   "fiwarelab-auth-url",
+			Usage:  "Fiwarelab authentication URL",
 			Value:  "",
 		},
 		mcnflag.BoolFlag{
-			EnvVar: "OS_INSECURE",
-			Name:   "openstack-insecure",
+			EnvVar: "FIWARELAB_INSECURE",
+			Name:   "fiwarelab-insecure",
 			Usage:  "Disable TLS credential checking.",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_CACERT",
-			Name:   "openstack-cacert",
+			EnvVar: "FIWARELAB_CACERT",
+			Name:   "fiwarelab-cacert",
 			Usage:  "CA certificate bundle to verify against",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_DOMAIN_ID",
-			Name:   "openstack-domain-id",
-			Usage:  "OpenStack domain ID (identity v3 only)",
+			EnvVar: "FIWARELAB_DOMAIN_ID",
+			Name:   "fiwarelab-domain-id",
+			Usage:  "Fiwarelab domain ID (identity v3 only)",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_DOMAIN_NAME",
-			Name:   "openstack-domain-name",
-			Usage:  "OpenStack domain name (identity v3 only)",
+			EnvVar: "FIWARELAB_DOMAIN_NAME",
+			Name:   "fiwarelab-domain-name",
+			Usage:  "Fiwarelab domain name (identity v3 only)",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_USERNAME",
-			Name:   "openstack-username",
-			Usage:  "OpenStack username",
+			EnvVar: "FIWARELAB_USERNAME",
+			Name:   "fiwarelab-username",
+			Usage:  "Fiwarelab username",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_PASSWORD",
-			Name:   "openstack-password",
-			Usage:  "OpenStack password",
+			EnvVar: "FIWARELAB_PASSWORD",
+			Name:   "fiwarelab-password",
+			Usage:  "Fiwarelab password",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_TENANT_NAME",
-			Name:   "openstack-tenant-name",
-			Usage:  "OpenStack tenant name",
+			EnvVar: "FIWARELAB_TENANT_NAME",
+			Name:   "fiwarelab-tenant-name",
+			Usage:  "Fiwarelab tenant name",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_TENANT_ID",
-			Name:   "openstack-tenant-id",
-			Usage:  "OpenStack tenant id",
+			EnvVar: "FIWARELAB_TENANT_ID",
+			Name:   "fiwarelab-tenant-id",
+			Usage:  "Fiwarelab tenant id",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_REGION_NAME",
-			Name:   "openstack-region",
-			Usage:  "OpenStack region name",
+			EnvVar: "FIWARELAB_REGION_NAME",
+			Name:   "fiwarelab-region",
+			Usage:  "Fiwarelab region name",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_AVAILABILITY_ZONE",
-			Name:   "openstack-availability-zone",
-			Usage:  "OpenStack availability zone",
+			EnvVar: "FIWARELAB_AVAILABILITY_ZONE",
+			Name:   "fiwarelab-availability-zone",
+			Usage:  "Fiwarelab availability zone",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_ENDPOINT_TYPE",
-			Name:   "openstack-endpoint-type",
-			Usage:  "OpenStack endpoint type (adminURL, internalURL or publicURL)",
+			EnvVar: "FIWARELAB_ENDPOINT_TYPE",
+			Name:   "fiwarelab-endpoint-type",
+			Usage:  "Fiwarelab endpoint type (adminURL, internalURL or publicURL)",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_FLAVOR_ID",
-			Name:   "openstack-flavor-id",
-			Usage:  "OpenStack flavor id to use for the instance",
+			EnvVar: "FIWARELAB_FLAVOR_ID",
+			Name:   "fiwarelab-flavor-id",
+			Usage:  "Fiwarelab flavor id to use for the instance",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_FLAVOR_NAME",
-			Name:   "openstack-flavor-name",
-			Usage:  "OpenStack flavor name to use for the instance",
+			EnvVar: "FIWARELAB_FLAVOR_NAME",
+			Name:   "fiwarelab-flavor-name",
+			Usage:  "Fiwarelab flavor name to use for the instance",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_IMAGE_ID",
-			Name:   "openstack-image-id",
-			Usage:  "OpenStack image id to use for the instance",
+			EnvVar: "FIWARELAB_IMAGE_ID",
+			Name:   "fiwarelab-image-id",
+			Usage:  "Fiwarelab image id to use for the instance",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_IMAGE_NAME",
-			Name:   "openstack-image-name",
-			Usage:  "OpenStack image name to use for the instance",
+			EnvVar: "FIWARELAB_IMAGE_NAME",
+			Name:   "fiwarelab-image-name",
+			Usage:  "Fiwarelab image name to use for the instance",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_KEYPAIR_NAME",
-			Name:   "openstack-keypair-name",
-			Usage:  "OpenStack keypair to use to SSH to the instance",
+			EnvVar: "FIWARELAB_KEYPAIR_NAME",
+			Name:   "fiwarelab-keypair-name",
+			Usage:  "Fiwarelab keypair to use to SSH to the instance",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_NETWORK_ID",
-			Name:   "openstack-net-id",
-			Usage:  "OpenStack network id the machine will be connected on",
+			EnvVar: "FIWARELAB_NETWORK_ID",
+			Name:   "fiwarelab-net-id",
+			Usage:  "Fiwarelab network id the machine will be connected on",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_PRIVATE_KEY_FILE",
-			Name:   "openstack-private-key-file",
+			EnvVar: "FIWARELAB_PRIVATE_KEY_FILE",
+			Name:   "fiwarelab-private-key-file",
 			Usage:  "Private keyfile to use for SSH (absolute path)",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_USER_DATA_FILE",
-			Name:   "openstack-user-data-file",
-			Usage:  "File containing an openstack userdata script",
+			EnvVar: "FIWARELAB_USER_DATA_FILE",
+			Name:   "fiwarelab-user-data-file",
+			Usage:  "File containing an fiwarelab userdata script",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_NETWORK_NAME",
-			Name:   "openstack-net-name",
-			Usage:  "OpenStack network name the machine will be connected on",
+			EnvVar: "FIWARELAB_NETWORK_NAME",
+			Name:   "fiwarelab-net-name",
+			Usage:  "Fiwarelab network name the machine will be connected on",
 			Value:  "",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_SECURITY_GROUPS",
-			Name:   "openstack-sec-groups",
-			Usage:  "OpenStack comma separated security groups for the machine",
+			EnvVar: "FIWARELAB_SECURITY_GROUPS",
+			Name:   "fiwarelab-sec-groups",
+			Usage:  "Fiwarelab comma separated security groups for the machine",
 			Value:  "",
 		},
 		mcnflag.BoolFlag{
-			EnvVar: "OS_NOVA_NETWORK",
-			Name:   "openstack-nova-network",
+			EnvVar: "FIWARELAB_NOVA_NETWORK",
+			Name:   "fiwarelab-nova-network",
 			Usage:  "Use the nova networking services instead of neutron.",
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_FLOATINGIP_POOL",
-			Name:   "openstack-floatingip-pool",
-			Usage:  "OpenStack floating IP pool to get an IP from to assign to the instance",
+			EnvVar: "FIWARELAB_FLOATINGIP_POOL",
+			Name:   "fiwarelab-floatingip-pool",
+			Usage:  "Fiwarelab floating IP pool to get an IP from to assign to the instance",
 			Value:  "",
 		},
 		mcnflag.IntFlag{
-			EnvVar: "OS_IP_VERSION",
-			Name:   "openstack-ip-version",
-			Usage:  "OpenStack version of IP address assigned for the machine",
+			EnvVar: "FIWARELAB_IP_VERSION",
+			Name:   "fiwarelab-ip-version",
+			Usage:  "Fiwarelab version of IP address assigned for the machine",
 			Value:  4,
 		},
 		mcnflag.StringFlag{
-			EnvVar: "OS_SSH_USER",
-			Name:   "openstack-ssh-user",
-			Usage:  "OpenStack SSH user",
+			EnvVar: "FIWARELAB_SSH_USER",
+			Name:   "fiwarelab-ssh-user",
+			Usage:  "Fiwarelab SSH user",
 			Value:  defaultSSHUser,
 		},
 		mcnflag.IntFlag{
-			EnvVar: "OS_SSH_PORT",
-			Name:   "openstack-ssh-port",
-			Usage:  "OpenStack SSH port",
+			EnvVar: "FIWARELAB_SSH_PORT",
+			Name:   "fiwarelab-ssh-port",
+			Usage:  "Fiwarelab SSH port",
 			Value:  defaultSSHPort,
 		},
 		mcnflag.IntFlag{
-			EnvVar: "OS_ACTIVE_TIMEOUT",
-			Name:   "openstack-active-timeout",
-			Usage:  "OpenStack active timeout",
+			EnvVar: "FIWARELAB_ACTIVE_TIMEOUT",
+			Name:   "fiwarelab-active-timeout",
+			Usage:  "Fiwarelab active timeout",
 			Value:  defaultActiveTimeout,
 		},
 		mcnflag.BoolFlag{
-			EnvVar: "OS_CONFIG_DRIVE",
-			Name:   "openstack-config-drive",
-			Usage:  "Enables the OpenStack config drive for the instance",
+			EnvVar: "FIWARELAB_CONFIG_DRIVE",
+			Name:   "fiwarelab-config-drive",
+			Usage:  "Enables the Fiwarelab config drive for the instance",
 		},
 	}
 }
@@ -263,44 +263,44 @@ func (d *Driver) SetClient(client Client) {
 
 // DriverName returns the name of the driver
 func (d *Driver) DriverName() string {
-	return "openstack"
+	return "fiwarelab"
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
-	d.AuthUrl = flags.String("openstack-auth-url")
-	d.ActiveTimeout = flags.Int("openstack-active-timeout")
-	d.Insecure = flags.Bool("openstack-insecure")
-	d.CaCert = flags.String("openstack-cacert")
-	d.DomainID = flags.String("openstack-domain-id")
-	d.DomainName = flags.String("openstack-domain-name")
-	d.Username = flags.String("openstack-username")
-	d.Password = flags.String("openstack-password")
-	d.TenantName = flags.String("openstack-tenant-name")
-	d.TenantId = flags.String("openstack-tenant-id")
-	d.Region = flags.String("openstack-region")
-	d.AvailabilityZone = flags.String("openstack-availability-zone")
-	d.EndpointType = flags.String("openstack-endpoint-type")
-	d.FlavorId = flags.String("openstack-flavor-id")
-	d.FlavorName = flags.String("openstack-flavor-name")
-	d.ImageId = flags.String("openstack-image-id")
-	d.ImageName = flags.String("openstack-image-name")
-	d.NetworkId = flags.String("openstack-net-id")
-	d.NetworkName = flags.String("openstack-net-name")
-	if flags.String("openstack-sec-groups") != "" {
-		d.SecurityGroups = strings.Split(flags.String("openstack-sec-groups"), ",")
+	d.AuthUrl = flags.String("fiwarelab-auth-url")
+	d.ActiveTimeout = flags.Int("fiwarelab-active-timeout")
+	d.Insecure = flags.Bool("fiwarelab-insecure")
+	d.CaCert = flags.String("fiwarelab-cacert")
+	d.DomainID = flags.String("fiwarelab-domain-id")
+	d.DomainName = flags.String("fiwarelab-domain-name")
+	d.Username = flags.String("fiwarelab-username")
+	d.Password = flags.String("fiwarelab-password")
+	d.TenantName = flags.String("fiwarelab-tenant-name")
+	d.TenantId = flags.String("fiwarelab-tenant-id")
+	d.Region = flags.String("fiwarelab-region")
+	d.AvailabilityZone = flags.String("fiwarelab-availability-zone")
+	d.EndpointType = flags.String("fiwarelab-endpoint-type")
+	d.FlavorId = flags.String("fiwarelab-flavor-id")
+	d.FlavorName = flags.String("fiwarelab-flavor-name")
+	d.ImageId = flags.String("fiwarelab-image-id")
+	d.ImageName = flags.String("fiwarelab-image-name")
+	d.NetworkId = flags.String("fiwarelab-net-id")
+	d.NetworkName = flags.String("fiwarelab-net-name")
+	if flags.String("fiwarelab-sec-groups") != "" {
+		d.SecurityGroups = strings.Split(flags.String("fiwarelab-sec-groups"), ",")
 	}
-	d.FloatingIpPool = flags.String("openstack-floatingip-pool")
-	d.IpVersion = flags.Int("openstack-ip-version")
-	d.ComputeNetwork = flags.Bool("openstack-nova-network")
-	d.SSHUser = flags.String("openstack-ssh-user")
-	d.SSHPort = flags.Int("openstack-ssh-port")
-	d.ExistingKey = flags.String("openstack-keypair-name") != ""
-	d.KeyPairName = flags.String("openstack-keypair-name")
-	d.PrivateKeyFile = flags.String("openstack-private-key-file")
-	d.ConfigDrive = flags.Bool("openstack-config-drive")
+	d.FloatingIpPool = flags.String("fiwarelab-floatingip-pool")
+	d.IpVersion = flags.Int("fiwarelab-ip-version")
+	d.ComputeNetwork = flags.Bool("fiwarelab-nova-network")
+	d.SSHUser = flags.String("fiwarelab-ssh-user")
+	d.SSHPort = flags.Int("fiwarelab-ssh-port")
+	d.ExistingKey = flags.String("fiwarelab-keypair-name") != ""
+	d.KeyPairName = flags.String("fiwarelab-keypair-name")
+	d.PrivateKeyFile = flags.String("fiwarelab-private-key-file")
+	d.ConfigDrive = flags.Bool("fiwarelab-config-drive")
 
-	if flags.String("openstack-user-data-file") != "" {
-		userData, err := ioutil.ReadFile(flags.String("openstack-user-data-file"))
+	if flags.String("fiwarelab-user-data-file") != "" {
+		userData, err := ioutil.ReadFile(flags.String("fiwarelab-user-data-file"))
 		if err == nil {
 			d.UserData = userData
 		} else {
@@ -484,7 +484,7 @@ const (
 	errorMandatoryOption         string = "%s must be specified using the CLI option %s"
 	errorExclusiveOptions        string = "Either %s or %s must be specified, not both"
 	errorBothOptions             string = "Both %s and %s must be specified"
-	errorMandatoryTenantNameOrID string = "Tenant id or name must be provided either using one of the environment variables OS_TENANT_ID and OS_TENANT_NAME or one of the CLI options --openstack-tenant-id and --openstack-tenant-name"
+	errorMandatoryTenantNameOrID string = "Tenant id or name must be provided either using one of the environment variables FIWARELAB_TENANT_ID and FIWARELAB_TENANT_NAME or one of the CLI options --fiwarelab-tenant-id and --fiwarelab-tenant-name"
 	errorWrongEndpointType       string = "Endpoint type must be 'publicURL', 'adminURL' or 'internalURL'"
 	errorUnknownFlavorName       string = "Unable to find flavor named %s"
 	errorUnknownImageName        string = "Unable to find image named %s"
@@ -494,27 +494,27 @@ const (
 
 func (d *Driver) checkConfig() error {
 	if d.AuthUrl == "" {
-		return fmt.Errorf(errorMandatoryEnvOrOption, "Authentication URL", "OS_AUTH_URL", "--openstack-auth-url")
+		return fmt.Errorf(errorMandatoryEnvOrOption, "Authentication URL", "FIWARELAB_AUTH_URL", "--fiwarelab-auth-url")
 	}
 	if d.Username == "" {
-		return fmt.Errorf(errorMandatoryEnvOrOption, "Username", "OS_USERNAME", "--openstack-username")
+		return fmt.Errorf(errorMandatoryEnvOrOption, "Username", "FIWARELAB_USERNAME", "--fiwarelab-username")
 	}
 	if d.Password == "" {
-		return fmt.Errorf(errorMandatoryEnvOrOption, "Password", "OS_PASSWORD", "--openstack-password")
+		return fmt.Errorf(errorMandatoryEnvOrOption, "Password", "FIWARELAB_PASSWORD", "--fiwarelab-password")
 	}
 	if d.TenantName == "" && d.TenantId == "" {
 		return fmt.Errorf(errorMandatoryTenantNameOrID)
 	}
 
 	if d.FlavorName == "" && d.FlavorId == "" {
-		return fmt.Errorf(errorMandatoryOption, "Flavor name or Flavor id", "--openstack-flavor-name or --openstack-flavor-id")
+		return fmt.Errorf(errorMandatoryOption, "Flavor name or Flavor id", "--fiwarelab-flavor-name or --fiwarelab-flavor-id")
 	}
 	if d.FlavorName != "" && d.FlavorId != "" {
 		return fmt.Errorf(errorExclusiveOptions, "Flavor name", "Flavor id")
 	}
 
 	if d.ImageName == "" && d.ImageId == "" {
-		return fmt.Errorf(errorMandatoryOption, "Image name or Image id", "--openstack-image-name or --openstack-image-id")
+		return fmt.Errorf(errorMandatoryOption, "Image name or Image id", "--fiwarelab-image-name or --fiwarelab-image-id")
 	}
 	if d.ImageName != "" && d.ImageId != "" {
 		return fmt.Errorf(errorExclusiveOptions, "Image name", "Image id")

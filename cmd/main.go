@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	plugin.RegisterDriver(new(fiwarelab.Driver))
+	plugin.RegisterDriver(fiwarelab.NewDriver("", ""))
 }

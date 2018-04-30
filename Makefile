@@ -3,6 +3,8 @@ default: build
 # Default version empty
 version := "${VERSION:-}"
 
+release_path := "compile_artifacts"
+
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 name := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
@@ -30,16 +32,16 @@ deps:
 	go get
 
 release: deps
-	rm -rf release
-	mkdir release
-	GOOS=linux GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name) ./cmd
-	tar --remove-files -cvzf release/$(name)-linux-amd64$(version).tar.gz -C release $(name)
+	rm -rf $(release_path)
+	mkdir $(release_path)
+	GOOS=linux GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o $(release_path)/$(name) ./cmd
+	tar --remove-files -cvzf $(release_path)/$(name)-linux-amd64$(version).tar.gz -C $(release_path) $(name)
 
 release-other: deps
-	GOOS=darwin GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name) ./cmd
-	tar --remove-files -cvzf release/$(name)-darwin-amd64$(version).tar.gz -C release $(name)
-	GOOS=windows GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o release/$(name).exe ./cmd
-	tar --remove-files -cvzf release/$(name)-windows-amd64$(version).tar.gz -C release $(name).exe
+	GOOS=darwin GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o $(release_path)/$(name) ./cmd
+	tar --remove-files -cvzf $(release_path)/$(name)-darwin-amd64$(version).tar.gz -C $(release_path) $(name)
+	GOOS=windows GOARCH=amd64 GOGC=off CGOENABLED=0 go build -i -o $(release_path)/$(name).exe ./cmd
+	tar --remove-files -cvzf $(release_path)/$(name)-windows-amd64$(version).tar.gz -C $(release_path) $(name).exe
 
 install:
 	cp bin/$(name) /usr/local/bin/

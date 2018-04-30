@@ -1,0 +1,36 @@
+#!/bin/sh
+
+set -x
+
+: ${UPLOAD_USER:=upload}
+: ${UPLOAD_SERVER:=repo.create-net.org}
+: ${UPLOAD_BASE:=/var/www/html/build}
+: ${UPLOAD_LOCAL_ARTIFACTS:=./compile_artifacts/.}
+
+apk add --update openssh-client rsync
+
+# Configure SSH
+mkdir -p "${HOME}/.ssh"
+printf "Hiding private ssh key from logs\n" >&2
+set +x
+printf "%s" "${SSH_UPLOAD_REPO_KEY}" >  "${HOME}/.ssh/id_rsa"
+set -x
+chmod 700 "${HOME}/.ssh/id_rsa"
+cat <<EOF > "${HOME}/.ssh/config"
+Host ${UPLOAD_SERVER}
+    User ${UPLOAD_USER}
+    IdentityFile ${HOME}/.ssh/id_rsa
+    StrictHostKeyChecking no
+EOF
+
+cat "${HOME}/.ssh/config"
+
+ssh -v "${UPLOAD_SERVER}" \
+    mkdir -p \
+        "${UPLOAD_BASE}/${CI_PROJECT_PATH}/${CI_COMMIT_SHA}" \
+        "${UPLOAD_BASE}/${CI_PROJECT_PATH}/${CI_COMMIT_REF_NAME}"
+
+rsync -v -a "${UPLOAD_LOCAL_ARTIFACTS}" \
+    "${UPLOAD_SERVER}:${UPLOAD_BASE}/${CI_PROJECT_PATH}/${CI_COMMIT_SHA}"
+rsync -v -a "${UPLOAD_LOCAL_ARTIFACTS}" --link-dest "${UPLOAD_BASE}/${CI_PROJECT_PATH}/${CI_COMMIT_SHA}" \
+    "${UPLOAD_SERVER}:${UPLOAD_BASE}/${CI_PROJECT_PATH}/${CI_COMMIT_REF_NAME}"

@@ -4,7 +4,7 @@ stages:
 
 variables:
   PPATH: /go/src/github.com/smartsdk
-    
+
 image: golang
 
 before_script:

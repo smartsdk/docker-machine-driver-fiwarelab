@@ -1,6 +1,7 @@
 ---
 stages:
   - build
+  - upload
 
 variables:
   PPATH: /go/src/github.com/smartsdk
@@ -17,4 +18,9 @@ build:
     - cd $PPATH/docker-machine-driver-fiwarelab && make release
   artifacts:
     paths:
-      - release
+      - compile_artifacts
+
+upload:
+  stage: upload
+  script:
+  - ./.uploader
